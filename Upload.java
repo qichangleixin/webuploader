@@ -36,3 +36,19 @@
         }
 		return sysFileResult;
 	}
+
+	public String fileUpload(HttpServletRequest request, MultipartFile file, String filePath) throws Exception {
+		String fileName = "";
+		if (!file.isEmpty()) {
+			try {
+				String uuid = Common.getUUID();
+				String suffix  = file.getOriginalFilename().split("\\.")[file.getOriginalFilename().split("\\.").length-1];
+				String fileSavePath = filePath + "/" + (uuid +"."+suffix);
+				fileName = (uuid+"."+suffix);
+				file.transferTo(new File(fileSavePath));
+			} catch (Exception e) {
+				throw e;
+			}
+		}
+		return fileName;
+	}
