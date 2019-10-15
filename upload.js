@@ -2,7 +2,6 @@
     // 当domReady的时候开始初始化
     $(function() {
         	var $wrap = $('#uploader'),
-        	$businessId=$("#EVENT_ID").val(),//业务代码
             // 图片容器
             $queue = $( '<ul class="filelist"></ul>' )
                 .appendTo( $wrap.find( '.queueList' ) ),
@@ -723,6 +722,9 @@
 	         });
         }
         initFileList();
+    	$('.webuploader-pick').click(function(){
+    		$('input[type="file"]').click()
+    	})
     });
 
 })( jQuery );
